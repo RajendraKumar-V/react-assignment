@@ -1,4 +1,6 @@
-export const setSize = (size) => ({
-    type: 'SET_SIZE',
-    payload: size,
-  });
+export const setProductSize = (size) => {
+    return {
+      type: 'SET_SIZE',
+      payload: size,
+    };
+  };

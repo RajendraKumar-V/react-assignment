@@ -2,7 +2,7 @@ const initialState = {
     selectedSize: null,
   };
   
-  export const sizeReducer = (state = initialState, action) => {
+  const productReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SET_SIZE':
         return {
@@ -13,3 +13,5 @@ const initialState = {
         return state;
     }
   };
+  
+  export default productReducer;
