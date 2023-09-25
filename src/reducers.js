@@ -1,17 +1,15 @@
 const initialState = {
-    size: 'medium', // Default size
+    selectedSize: null,
   };
   
-  const sizeReducer = (state = initialState, action) => {
+  export const sizeReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SET_SIZE':
         return {
           ...state,
-          size: action.payload,
+          selectedSize: action.payload,
         };
       default:
         return state;
     }
   };
-  
-  export default sizeReducer;
