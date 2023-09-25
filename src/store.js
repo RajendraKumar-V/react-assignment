@@ -1,14 +1,16 @@
 import { createStore } from 'redux';
-import rootReducer from './rootReducer';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducer from './reducers';
 
-// Load the selected size from local storage
-const savedSize = localStorage.getItem('selectedSize');
-const initialState = {
-  size: {
-    selectedSize: savedSize || null,
-  },
+const persistConfig = {
+  key: 'root',
+  storage,
 };
 
-const store = createStore(rootReducer, initialState);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default store;
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+export { store, persistor };

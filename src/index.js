@@ -1,17 +1,24 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from 'react-dom'
+//import ReactDOM from "react-dom/client";
 import "./index.css";
-//import App from "./App";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import ProductSizeSelector from "./ProductSizeSelector";
-import { Provider } from "react-redux";
-import store  from "./store";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
+import MyErrorBoundary from './ErrorBoundary';
+import { createRoot } from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById('root'));
 root.render(
+  <MyErrorBoundary>
   <Provider store={store}>
-    <ProductSizeSelector />
-  </Provider>
+  <PersistGate loading={null} persistor={persistor}>
+    <App/>
+  </PersistGate>
+</Provider>
+</MyErrorBoundary>,
 );
 
 // If you want to start measuring performance in your app, pass a function
